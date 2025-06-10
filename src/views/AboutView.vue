@@ -5,7 +5,7 @@
 </template>
 
 <style>
-@media (width >= 1024px) {
+@media (width >=1024px) {
   .about {
     display: flex;
     align-items: center;
