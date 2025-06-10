@@ -1,6 +1,6 @@
 <script setup lang="ts">
-const app = "12"
-
+const app1 = '12'
+console.log(app1)
 </script>
 
 <template>
