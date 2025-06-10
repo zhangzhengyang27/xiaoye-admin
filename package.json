@@ -16,11 +16,6 @@
     "lint": "pnpm lint:eslint && pnpm lint:prettier && pnpm lint:stylelint",
     "prepare": "husky"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "pnpm lint-staged"
-    }
-  },
   "dependencies": {
     "element-plus": "^2.10.1",
     "pinia": "^3.0.1",
