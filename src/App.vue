@@ -1,4 +1,7 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+const app = "12"
+
+</script>
 
 <template>
   <RouterView />
