@@ -6,8 +6,8 @@ import { createPinia } from 'pinia'
 import App from './App.vue'
 import router from './router'
 
-// 引入重置样式
-import './style/reset.scss'
+import './styles/reset.scss' // 引入重置样式
+import 'element-plus/dist/index.css' // 引入element-plus样式
 
 const app = createApp(App)
 
