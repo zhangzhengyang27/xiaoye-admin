@@ -8,6 +8,5 @@
   "*.{css,scss,html}": [
     "prettier --cache --ignore-unknown --write",
     "stylelint --fix --allow-empty-input"
-  ],
-  "*.md": ["prettier --cache --ignore-unknown --write"]
+  ]
 }
