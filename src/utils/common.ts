@@ -1,0 +1,193 @@
+/**
+ * 判断是否为函数类型
+ * @param value - 要检查的值
+ * @returns 如果值是一个函数则返回 true，否则返回 false
+ */
+export function isFunction(value: any): value is (...args: any[]) => any {
+  return typeof value === 'function'
+}
+
+/**
+ * 判断是否为手机号
+ * @param value - 要检查的值
+ * @returns 如果值是手机号则返回 true，否则返回 false
+ */
+export function isPhoneNumber(value: any): boolean {
+  const phoneRegex = /^1[3-9]\d{9}$/
+  return typeof value === 'string' && phoneRegex.test(value)
+}
+
+/**
+ * 生成指定范围内的随机整数
+ * @param min - 最小值（包含）
+ * @param max - 最大值（不包含）
+ * @returns 返回 min 和 max 之间的随机整数
+ */
+export function randomNum(min: number, max: number) {
+  const num = Math.floor(Math.random() * (max - min) + min)
+  return num
+}
+
+/**
+ * 生成随机 RGB 颜色
+ * @param min - 颜色分量最小值 (0-255)
+ * @param max - 颜色分量最大值 (0-255)
+ * @returns 返回格式为 "rgb(r,g,b)" 的随机颜色字符串
+ */
+export function randomColor(min: number, max: number) {
+  const r = randomNum(min, max)
+  const g = randomNum(min, max)
+  const b = randomNum(min, max)
+  return `rgb(${r},${g},${b})`
+}
+
+/**
+ * 在画布上绘制验证码图片
+ * @param dom - 目标canvas元素
+ * @param width - 画布宽度
+ * @param height - 画布高度
+ * @returns 生成的4位数字验证码字符串
+ *
+ * 功能说明：
+ * 1. 生成随机背景色填充画布
+ * 2. 绘制4个随机旋转的数字文本
+ * 3. 添加5条干扰线和41个干扰点
+ * 4. 返回生成的验证码文本
+ */
+export function draw(dom: HTMLCanvasElement, width: number, height: number) {
+  let imgCode = ''
+
+  const NUMBER_STRING = '0123456789'
+
+  const ctx = dom.getContext('2d')
+  if (!ctx) return imgCode
+
+  ctx.fillStyle = randomColor(180, 230)
+  ctx.fillRect(0, 0, width, height)
+  for (let i = 0; i < 4; i += 1) {
+    const text = NUMBER_STRING[randomNum(0, NUMBER_STRING.length)]
+    imgCode += text
+    const fontSize = randomNum(18, 41)
+    const deg = randomNum(-30, 30)
+    ctx.font = `${fontSize}px Simhei`
+    ctx.textBaseline = 'top'
+    ctx.fillStyle = randomColor(80, 150)
+    ctx.save()
+    ctx.translate(30 * i + 15, 15)
+    ctx.rotate((deg * Math.PI) / 180)
+    ctx.fillText(text, -15 + 5, -15)
+    ctx.restore()
+  }
+  for (let i = 0; i < 5; i += 1) {
+    ctx.beginPath()
+    ctx.moveTo(randomNum(0, width), randomNum(0, height))
+    ctx.lineTo(randomNum(0, width), randomNum(0, height))
+    ctx.strokeStyle = randomColor(180, 230)
+    ctx.closePath()
+    ctx.stroke()
+  }
+  for (let i = 0; i < 41; i += 1) {
+    ctx.beginPath()
+    ctx.arc(randomNum(0, width), randomNum(0, height), 1, 0, 2 * Math.PI)
+    ctx.closePath()
+    ctx.fillStyle = randomColor(150, 200)
+    ctx.fill()
+  }
+  return imgCode
+}
+
+/**
+ * 解析传入的 SVG 字符串并提取关键信息
+ * @param svgStr - 包含 SVG 内容的字符串，格式为标准的 SVG XML
+ * @returns 返回一个包含 SVG 信息的对象
+ */
+export function getSvgInfo(svgStr: string): SvgInfo {
+  const parser = new DOMParser()
+  const xmlDoc = parser.parseFromString(svgStr, 'application/xml')
+  const svgElement = xmlDoc.getElementsByTagName('svg')[0]
+
+  if (!svgElement) {
+    throw new Error('Invalid SVG content: No <svg> tag found.')
+  }
+
+  const viewBox = svgElement.getAttribute('viewBox')
+  let width = 0
+  let height = 0
+
+  if (viewBox) {
+    const viewBoxValues = viewBox.split(/\s+/).map(Number)
+    if (viewBoxValues.length >= 4) {
+      width = viewBoxValues[2]
+      height = viewBoxValues[3]
+    }
+  }
+
+  const pathElements = svgElement.getElementsByTagName('path')
+  const pathArray: string[] = []
+
+  for (let i = 0; i < pathElements.length; i++) {
+    pathArray.push(pathElements[i].outerHTML)
+  }
+
+  const body = pathArray.join('')
+
+  return {
+    width,
+    height,
+    body,
+  }
+}
+
+/**
+ * SVG 信息接口
+ */
+export interface SvgInfo {
+  width: number
+  height: number
+  body: string
+}
+
+/**
+ * 判断值是否为空。 针对数组、对象、字符串、Map、Set、null 和 undefined 进行处理，并在值为 null 或 undefined 时直接返回 true
+ * @param value - 要检查的值
+ * @returns 如果值为空则返回 true，否则返回 false、
+ * @example
+ * console.log(isAllEmpty(null)) // true
+ * console.log(isAllEmpty(undefined)) // true
+ * console.log(isAllEmpty('')) // true
+ * console.log(isAllEmpty([])) // true
+ * console.log(isAllEmpty({})) // true
+ * console.log(isAllEmpty(new Map())) // true
+ * console.log(isAllEmpty(new Set())) // true
+ *
+ * console.log(isAllEmpty('abc')) // false
+ * console.log(isAllEmpty([1, 2, 3])) // false
+ * console.log(isAllEmpty({ a: 1 })) // false
+ * console.log(isAllEmpty(new Map([[1, 2]]))) // false
+ * console.log(isAllEmpty(0)) // false
+ * console.log(isAllEmpty(false)) // false
+ */
+export function isAllEmpty(value: any): boolean {
+  // 处理 null 和 undefined
+  if (value === null || value === undefined) {
+    return true
+  }
+
+  // 处理字符串、数组
+  if (typeof value === 'string' || Array.isArray(value)) {
+    return value.length === 0
+  }
+
+  // 处理对象
+  if (typeof value === 'object') {
+    if (value instanceof Map || value instanceof Set) {
+      return value.size === 0
+    }
+
+    // 普通对象
+    return Object.keys(value).length === 0
+  }
+
+  // 其他类型（如数字、布尔值等）不视为空
+  return false
+}
