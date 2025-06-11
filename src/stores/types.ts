@@ -11,7 +11,7 @@ export type positionType = {
 }
 
 export type appType = {
-  siderbar: {
+  sidebar: {
     opened: boolean
     withoutAnimation: boolean
     // 判断是否手动点击Collapse
