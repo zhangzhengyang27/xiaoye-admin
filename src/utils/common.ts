@@ -225,3 +225,40 @@ export function debounce<T extends (...args: any[]) => any>(
     }
   }
 }
+
+/**
+ * 检查母数组是否包含子数组所有元素
+ * @param parentArray 母数组
+ * @param childArray 子数组
+ * @returns 如果包含所有元素返回true，否则返回false
+ */
+export function arrayContainsAll<T>(parentArray: T[], childArray: T[]): boolean {
+  // 处理空数组情况
+  if (childArray.length === 0) return true
+  if (parentArray.length === 0) return false
+
+  // 使用Map记录元素出现次数（处理重复元素）
+  const parentCount = new Map<any, number>()
+  const childCount = new Map<any, number>()
+
+  // 统计母数组元素
+  for (const item of parentArray) {
+    const key = typeof item === 'object' ? JSON.stringify(item) : item
+    parentCount.set(key, (parentCount.get(key) || 0) + 1)
+  }
+
+  // 统计子数组元素
+  for (const item of childArray) {
+    const key = typeof item === 'object' ? JSON.stringify(item) : item
+    childCount.set(key, (childCount.get(key) || 0) + 1)
+  }
+
+  // 检查子数组每个元素是否都在母数组中且数量足够
+  for (const [key, count] of childCount) {
+    if ((parentCount.get(key) || 0) < count) {
+      return false
+    }
+  }
+
+  return true
+}

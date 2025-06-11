@@ -36,6 +36,7 @@ const STORAGE_TAGS_KEY = `${responsiveStorageNameSpace()}tags`
  */
 export const useMultiTagsStore = defineStore('pure-multiTags', {
   state: () => ({
+    // todo 要集合路由中默认固定的 标签页
     // 存储标签页信息（路由信息）
     multiTags: storageLocal.get<StorageConfigs>(STORAGE_CONFIG_KEY)?.multiTagsCache
       ? storageLocal.get<StorageConfigs>(STORAGE_TAGS_KEY)

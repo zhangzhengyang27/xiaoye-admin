@@ -139,3 +139,12 @@ export function isMobile(): boolean {
 
   return mobileKeywords.some((keyword) => userAgent.includes(keyword)) || isSmallScreen
 }
+
+/**
+ * 判断值是否为字符串
+ * @param val 待检测的值
+ * @returns 如果是字符串返回true，否则返回false
+ */
+export function isString(val: unknown): val is string {
+  return typeof val === 'string'
+}
