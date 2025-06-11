@@ -1,23 +1,4 @@
 /**
- * 判断是否为函数类型
- * @param value - 要检查的值
- * @returns 如果值是一个函数则返回 true，否则返回 false
- */
-export function isFunction(value: any): value is (...args: any[]) => any {
-  return typeof value === 'function'
-}
-
-/**
- * 判断是否为手机号
- * @param value - 要检查的值
- * @returns 如果值是手机号则返回 true，否则返回 false
- */
-export function isPhoneNumber(value: any): boolean {
-  const phoneRegex = /^1[3-9]\d{9}$/
-  return typeof value === 'string' && phoneRegex.test(value)
-}
-
-/**
  * 生成指定范围内的随机整数
  * @param min - 最小值（包含）
  * @param max - 最大值（不包含）
@@ -190,4 +171,57 @@ export function isAllEmpty(value: any): boolean {
 
   // 其他类型（如数字、布尔值等）不视为空
   return false
+}
+
+/**
+ * 从对象数组中提取指定键值并去重
+ * @param arr 对象数组
+ * @param key 要提取的键名
+ * @returns 包含唯一值的数组
+ */
+export function getKeyList<T extends Record<string, any>>(arr: T[], key: keyof T): Array<T[keyof T]> {
+  if (!Array.isArray(arr)) return []
+
+  const result = new Set<T[keyof T]>()
+
+  for (const item of arr) {
+    if (item && key in item && item[key] !== undefined) {
+      result.add(item[key])
+    }
+  }
+
+  return Array.from(result)
+}
+
+/**
+ * 防抖函数
+ * @param fn 要执行的函数
+ * @param timeout 延迟时间(毫秒)
+ * @param immediate 是否立即执行
+ */
+export function debounce<T extends (...args: any[]) => any>(
+  fn: T,
+  timeout: number = 200,
+  immediate: boolean = false,
+): (...args: Parameters<T>) => void {
+  let timer: ReturnType<typeof setTimeout> | null = null
+
+  return function (this: any, ...args: Parameters<T>) {
+    const later = () => {
+      timer = null
+      if (!immediate) fn.apply(this, args)
+    }
+
+    const shouldCallNow = immediate && timer === null
+
+    if (timer) {
+      clearTimeout(timer)
+    }
+
+    timer = setTimeout(later, timeout)
+
+    if (shouldCallNow) {
+      fn.apply(this, args)
+    }
+  }
 }

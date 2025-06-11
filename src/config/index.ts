@@ -33,7 +33,7 @@ export const getPlatformConfig = async (app: App): Promise<undefined> => {
     url: `${VITE_PUBLIC_PATH}platform-config.json`,
   })
     .then(({ data: config }) => {
-      const $config = app.config.globalProperties.$config
+      let $config = app.config.globalProperties.$config
       // 自动注入系统配置
       if (app && $config && typeof config === 'object') {
         $config = Object.assign($config, config)

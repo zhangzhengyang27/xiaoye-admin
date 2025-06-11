@@ -1,2 +1,2 @@
-// import { ref } from 'vue'
-// import { getConfig } from '@/config'
+import { ref } from 'vue'
+import { getConfig } from '@/config'

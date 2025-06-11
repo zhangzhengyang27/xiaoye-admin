@@ -155,6 +155,12 @@ import User from '~icons/ri/user-3-fill'
 import Info from '~icons/ri/information-line'
 import Keyhole from '~icons/ri/shield-keyhole-line'
 
+import { useLayout } from '@/layout/hooks/useLayout'
+
+// 测试自己写的 useGlobal 是否生效
+const { $storage, $config } = useLayout()
+console.log($storage, $config)
+
 defineOptions({
   name: 'Login',
 })

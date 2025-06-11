@@ -1,5 +1,5 @@
 import type { VNode } from 'vue'
-import { isFunction } from '@/utils/common'
+import { isFunction } from '@/utils/is'
 import { type MessageHandler, ElMessage } from 'element-plus'
 
 /** 消息类型枚举 */

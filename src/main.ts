@@ -1,5 +1,5 @@
 import { createApp } from 'vue'
-import { createPinia } from 'pinia'
+import { setupStore } from '@/stores'
 
 import App from './App.vue'
 import router from './router'
@@ -20,7 +20,11 @@ app.component('IconifyIconOffline', IconifyIconOffline)
 app.component('IconifyIconOnline', IconifyIconOnline)
 app.component('FontIcon', FontIcon)
 
-app.use(createPinia())
+app.config.globalProperties.$config = 123
+app.config.globalProperties.$storage = 456
+app.config.globalProperties.$echarts = 789
+
+setupStore(app)
 app.use(router)
 app.use(ElementPlus)
 app.use(MotionPlugin)

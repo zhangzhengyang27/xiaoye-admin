@@ -1,5 +1,5 @@
 import { reactive } from 'vue'
-import { isPhoneNumber } from '@/utils/common'
+import { isPhoneNumber } from '@/utils/is'
 import type { FormRules } from 'element-plus'
 
 /**
