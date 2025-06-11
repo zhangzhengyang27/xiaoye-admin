@@ -1,0 +1,1 @@
+type Effect = 'light' | 'dark'

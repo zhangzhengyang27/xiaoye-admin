@@ -20,6 +20,7 @@
     "@types/lodash.clonedeep": "^4.5.9",
     "@vueuse/core": "^13.3.0",
     "@vueuse/motion": "^3.0.3",
+    "axios": "^1.9.0",
     "element-plus": "^2.10.1",
     "lodash.clonedeep": "^4.5.0",
     "pinia": "^3.0.1",
