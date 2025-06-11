@@ -1,6 +1,6 @@
 <template>
   <div class="select-none">
-    <img :src="bg" alt="wave" />
+    <img :src="bg" class="wave" />
     <div class="login-container">
       <div class="img">
         <component :is="toRaw(illustration)" />
@@ -9,11 +9,11 @@
         <div class="login-form">
           <Motion>
             <h2 class="outline-hidden">
-              <TypeIt :options="{ cursor: false, speed: 100 }" />
+              <TypeIt :options="{ strings: 'xiaoye', cursor: false, speed: 100 }" />
             </h2>
           </Motion>
 
-          <el-form v-if="currentPage === 0" ref="ruleFormRef" :mode="ruleForm" :rules="loginRules">
+          <el-form v-if="currentPage === 0" ref="ruleFormRef" :mode="ruleForm" :rules="loginRules" size="large">
             <Motion :delay="100">
               <el-form-item
                 :rules="[
@@ -64,29 +64,30 @@
             <Motion :delay="250">
               <el-form-item>
                 <div class="w-full h-[20px] flex justify-between items-center">
-                  <el-checkbox v-model="checked">
-                    <span class="flex"> 7 天内免登录 </span>
-                    <IconifyIconOffline
-                      v-tippy="{
-                        content: '勾选并登录后，规定的天数内无需用户输入用户名和密码，会自定登录系统',
-                        placement: 'top',
-                      }"
-                      :icon="Info"
-                      class="ml-1"
-                    />
-                  </el-checkbox>
+                  <el-row class="flex items-center">
+                    <el-checkbox v-model="checked">
+                      <span class="flex"> 7 天内免登录 </span>
+                    </el-checkbox>
+                    <el-tooltip
+                      content="勾选并登录后，规定的天数内无需用户输入用户名和密码，会自定登录系统"
+                      placement="top"
+                    >
+                      <IconifyIconOffline :icon="Info" class="ml-1" />
+                    </el-tooltip>
+                  </el-row>
+
                   <el-button link type="primary" @click="changeCurrentPage(4)"> 忘记密码 </el-button>
                 </div>
                 <el-button
-                  class="w-full mt-4!"
+                  class="w-full mt-4"
                   size="default"
                   type="primary"
                   :loading="loading"
                   :disabled="disabled"
                   @click="onLogin(ruleFormRef)"
                 >
-                  登录</el-button
-                >
+                  登录
+                </el-button>
               </el-form-item>
             </Motion>
 
@@ -127,9 +128,9 @@
         </div>
       </div>
       <!-- 页脚 -->
-      <div class="w-full flex-c absolute bottom-3 text-sm text-[rgba(0,0,0,0.6)] dark:text-[rgba(220,220,242,0.8)]">
+      <!-- <div class="w-full flex-c absolute bottom-3 text-sm text-[rgba(0,0,0,0.6)] dark:text-[rgba(220,220,242,0.8)]">
         Copyright © 2020-present xiaoye
-      </div>
+      </div> -->
     </div>
   </div>
 </template>
@@ -144,7 +145,7 @@ import type { FormInstance } from 'element-plus'
 import { useRenderIcon } from '@/components/icon/hooks'
 
 // 静态图片
-import bg from '@/assets/login/bg.jpg'
+import bg from '@/assets/login/bg.png'
 import illustration from '@/assets/login/illustration.svg'
 
 import ImageVerify from '@/components/imageVerify/index.vue'
@@ -163,7 +164,7 @@ const loading = ref(false)
 const checked = ref(false)
 const disabled = ref(false)
 const ruleFormRef = ref<FormInstance>()
-const currentPage = ref(1)
+const currentPage = ref(0)
 
 const ruleForm = reactive({
   username: 'admin',

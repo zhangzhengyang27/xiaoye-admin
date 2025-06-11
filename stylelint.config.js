@@ -2,11 +2,7 @@
 
 /** @type {import("stylelint").Config} */
 export default {
-  extends: [
-    'stylelint-config-standard',
-    'stylelint-config-html/vue',
-    'stylelint-config-recess-order',
-  ],
+  extends: ['stylelint-config-standard', 'stylelint-config-html/vue', 'stylelint-config-recess-order'],
   plugins: ['stylelint-scss', 'stylelint-order', 'stylelint-prettier'],
   overrides: [
     {

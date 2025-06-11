@@ -4,9 +4,12 @@ import { createPinia } from 'pinia'
 import App from './App.vue'
 import router from './router'
 
+// 全局引入 ElementPlus
 import ElementPlus from 'element-plus'
+import { MotionPlugin } from '@vueuse/motion'
 
 import './styles/reset.scss' // 引入重置样式
+import './styles/index.scss' // 引入全局样式
 import 'element-plus/dist/index.css' // 引入element-plus样式
 
 const app = createApp(App)
@@ -20,4 +23,5 @@ app.component('FontIcon', FontIcon)
 app.use(createPinia())
 app.use(router)
 app.use(ElementPlus)
+app.use(MotionPlugin)
 app.mount('#app')

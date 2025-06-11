@@ -1,7 +1,7 @@
 .wave {
   position: fixed;
   height: 100%;
-  width: 80%;
+  width: 100%;
   left: 0;
   bottom: 0;
   z-index: -1;
@@ -11,9 +11,9 @@
   width: 100vw;
   height: 100vh;
   max-width: 100%;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 18rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
   padding: 0 2rem;
 }
 
@@ -36,11 +36,6 @@
 
 .login-form {
   width: 360px;
-}
-
-.avatar {
-  width: 350px;
-  height: 80px;
 }
 
 .login-form h2 {
