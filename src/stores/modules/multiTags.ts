@@ -1,17 +1,10 @@
+import { getConfig, responsiveStorageNameSpace } from '@/config'
+import { routerArrays } from '@/layout/types'
+import { storageLocal } from '@/utils/storage'
 import { defineStore } from 'pinia'
-import {
-  type multiType,
-  type positionType,
-  store,
-  isUrl,
-  isEqual,
-  isNumber,
-  isBoolean,
-  getConfig,
-  routerArrays,
-  storageLocal,
-  responsiveStorageNameSpace,
-} from '../utils'
+import type { multiType } from '../types'
+import { isBoolean, isEqual, isNumber, isUrl } from '@/utils/is'
+import { store } from '../index'
 
 // 在文件顶部定义
 const STORAGE_CONFIG_KEY = `${responsiveStorageNameSpace()}configure`

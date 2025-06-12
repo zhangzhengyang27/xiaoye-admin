@@ -14,6 +14,7 @@ import {
   createWebHistory,
   createWebHashHistory,
 } from 'vue-router'
+import { useTimeoutFn } from '@vueuse/core'
 
 /**
  * 判断路由是否需要处理排名
@@ -142,4 +143,46 @@ function getTopMenu(tag = false): menuType {
   return topMenu
 }
 
-export { ascending, filterNoPermissionTree, filterTree, formatFlatteningRoutes, getTopMenu }
+/** 处理缓存路由（添加、删除、刷新） */
+function handleAliveRoute({ name }: ToRouteType, mode?: string) {
+  switch (mode) {
+    case 'add':
+      usePermissionStoreHook().cacheOperate({
+        mode: 'add',
+        name,
+      })
+      break
+    case 'delete':
+      usePermissionStoreHook().cacheOperate({
+        mode: 'delete',
+        name,
+      })
+      break
+    case 'refresh':
+      usePermissionStoreHook().cacheOperate({
+        mode: 'refresh',
+        name,
+      })
+      break
+    default:
+      usePermissionStoreHook().cacheOperate({
+        mode: 'delete',
+        name,
+      })
+      useTimeoutFn(() => {
+        usePermissionStoreHook().cacheOperate({
+          mode: 'add',
+          name,
+        })
+      }, 100)
+  }
+}
+
+export {
+  ascending,
+  filterNoPermissionTree,
+  filterTree,
+  formatFlatteningRoutes,
+  getTopMenu,
+  handleAliveRoute,
+}

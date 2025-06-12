@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      '@pureadmin/utils':
+        specifier: ^2.6.1
+        version: 2.6.1(vue@3.5.16(typescript@5.8.3))
       '@types/lodash.clonedeep':
         specifier: ^4.5.9
         version: 4.5.9
@@ -822,6 +825,17 @@ packages:
 
   '@polka/url@1.0.0-next.29':
     resolution: {integrity: sha512-wwQAWhWSuHaag8c4q/KN/vCoeOJYshAIvMQwD4GpSb3OiZklFfvAgmj0VCBBImRpuF/aFgIRzllXlVX93Jevww==}
+
+  '@pureadmin/utils@2.6.1':
+    resolution: {integrity: sha512-ODGPnhf1UmiZ4A95lu88n2VBAw4kEgUBQMPLfx6+JAIp1CHZnV98UyEX6E7twQ35AyjOO9m12i34//S6HN/D1A==}
+    peerDependencies:
+      echarts: '*'
+      vue: '*'
+    peerDependenciesMeta:
+      echarts:
+        optional: true
+      vue:
+        optional: true
 
   '@rolldown/pluginutils@1.0.0-beta.13':
     resolution: {integrity: sha512-/9TBv7Ir9ojO1mDlTy35X0GSGqvP+aRa44i2fciAK/EEJeimvJyL6eN2Ug2RwXEGFVumgZh231PeykYjo2WBtw==}
@@ -4348,6 +4362,10 @@ snapshots:
   '@pkgr/core@0.2.7': {}
 
   '@polka/url@1.0.0-next.29': {}
+
+  '@pureadmin/utils@2.6.1(vue@3.5.16(typescript@5.8.3))':
+    optionalDependencies:
+      vue: 3.5.16(typescript@5.8.3)
 
   '@rolldown/pluginutils@1.0.0-beta.13': {}
 

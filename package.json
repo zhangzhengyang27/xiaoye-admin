@@ -17,6 +17,7 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "@pureadmin/utils": "^2.6.1",
     "@types/lodash.clonedeep": "^4.5.9",
     "@vueuse/core": "^13.3.0",
     "@vueuse/motion": "^3.0.3",
