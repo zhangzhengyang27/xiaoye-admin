@@ -112,3 +112,7 @@ export const useUserStore = defineStore('user', {
     },
   },
 })
+
+export function useUserStoreHook() {
+  return useUserStore(store)
+}

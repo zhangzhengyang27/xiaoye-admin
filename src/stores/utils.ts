@@ -1,8 +1,0 @@
-export { store } from '@/stores'
-export { routerArrays } from '@/layout/types'
-export { router, resetRouter, constantMenus } from '@/router'
-export { getConfig, responsiveStorageNameSpace } from '@/config'
-export { isUrl, isEqual, isNumber, isBoolean, isMobile } from '@/utils/is'
-export { getKeyList, debounce } from '@/utils/common'
-export { storageLocal } from '@/utils/storage'
-export type { setType, appType, userType, multiType, cacheType, positionType } from './types'

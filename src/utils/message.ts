@@ -59,7 +59,10 @@ const DEFAULT_MESSAGE_PARAMS: Partial<MessageParams> = {
  * @param params 消息参数配置
  * @returns MessageHandler实例
  */
-const message = (content: string | VNode | (() => VNode), params?: MessageParams): MessageHandler => {
+const message = (
+  content: string | VNode | (() => VNode),
+  params?: MessageParams,
+): MessageHandler => {
   const mergedParams = {
     ...DEFAULT_MESSAGE_PARAMS,
     ...params,

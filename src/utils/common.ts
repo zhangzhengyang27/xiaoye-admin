@@ -179,7 +179,10 @@ export function isAllEmpty(value: any): boolean {
  * @param key 要提取的键名
  * @returns 包含唯一值的数组
  */
-export function getKeyList<T extends Record<string, any>>(arr: T[], key: keyof T): Array<T[keyof T]> {
+export function getKeyList<T extends Record<string, any>>(
+  arr: T[],
+  key: keyof T,
+): Array<T[keyof T]> {
   if (!Array.isArray(arr)) return []
 
   const result = new Set<T[keyof T]>()

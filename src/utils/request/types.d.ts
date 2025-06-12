@@ -9,7 +9,10 @@ export type resultType = {
  *
  * 从Method类型中提取出'get' | 'post' | 'put' | 'delete' | 'patch' | 'option' | 'head'这些方法
  */
-export type RequestMethods = Extract<Method, 'get' | 'post' | 'put' | 'delete' | 'patch' | 'option' | 'head'>
+export type RequestMethods = Extract<
+  Method,
+  'get' | 'post' | 'put' | 'delete' | 'patch' | 'option' | 'head'
+>
 
 export interface PureHttpError extends AxiosError {
   isCancelRequest?: boolean

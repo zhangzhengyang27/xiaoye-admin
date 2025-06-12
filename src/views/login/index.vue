@@ -13,7 +13,13 @@
             </h2>
           </Motion>
 
-          <el-form v-if="currentPage === 0" ref="ruleFormRef" :mode="ruleForm" :rules="loginRules" size="large">
+          <el-form
+            v-if="currentPage === 0"
+            ref="ruleFormRef"
+            :mode="ruleForm"
+            :rules="loginRules"
+            size="large"
+          >
             <Motion :delay="100">
               <el-form-item
                 :rules="[
@@ -76,7 +82,9 @@
                     </el-tooltip>
                   </el-row>
 
-                  <el-button link type="primary" @click="changeCurrentPage(4)"> 忘记密码 </el-button>
+                  <el-button link type="primary" @click="changeCurrentPage(4)">
+                    忘记密码
+                  </el-button>
                 </div>
                 <el-button
                   class="w-full mt-4"
@@ -194,7 +202,8 @@ const onLogin = async (formEl: FormInstance | undefined) => {
 const immediateDebounce: Function = useDebounceFn((formRef) => onLogin(formRef), 1000)
 
 useEventListener(document, 'keydown', ({ code }) => {
-  if (['Enter', 'NumpadEnter'].includes(code) && !disabled.value && !loading.value) immediateDebounce(ruleFormRef.value)
+  if (['Enter', 'NumpadEnter'].includes(code) && !disabled.value && !loading.value)
+    immediateDebounce(ruleFormRef.value)
 })
 
 const operates = [

@@ -12,7 +12,9 @@ export const useAppStore = defineStore('pure-app', {
       isClickCollapse: false,
     },
     // 这里的layout用于监听容器拖拉后恢复对应的导航模式
-    layout: storageLocal.get<StorageConfigs>(`${responsiveStorageNameSpace()}layout`)?.layout ?? getConfig().Layout,
+    layout:
+      storageLocal.get<StorageConfigs>(`${responsiveStorageNameSpace()}layout`)?.layout ??
+      getConfig().Layout,
     device: isMobile() ? 'mobile' : 'desktop',
     // 浏览器窗口的可视区域大小
     viewportSize: {
