@@ -146,10 +146,7 @@ function runTests() {
   console.assert(darken('rgb(255, 0, 0)', 30) === 'rgb(179, 0, 0)', 'RGB red darken 30% failed')
 
   // RGBA格式测试
-  console.assert(
-    darken('rgba(100, 200, 50, 0.5)', 10) === 'rgba(90, 180, 45, 0.5)',
-    'RGBA color darken 10% failed',
-  )
+  console.assert(darken('rgba(100, 200, 50, 0.5)', 10) === 'rgba(90, 180, 45, 0.5)', 'RGBA color darken 10% failed')
 
   // 边界测试
   console.assert(darken('rgb(100, 100, 100)', 0) === 'rgb(100, 100, 100)', '0% darken failed')
@@ -177,10 +174,7 @@ function runTestsLighten() {
   console.assert(lighten('rgb(100, 0, 0)', 30) === 'rgb(130, 0, 0)', 'RGB red lighten 30% failed')
 
   // RGBA格式测试
-  console.assert(
-    lighten('rgba(50, 100, 150, 0.5)', 10) === 'rgba(55, 110, 165, 0.5)',
-    'RGBA color lighten 10% failed',
-  )
+  console.assert(lighten('rgba(50, 100, 150, 0.5)', 10) === 'rgba(55, 110, 165, 0.5)', 'RGBA color lighten 10% failed')
 
   // 边界测试
   console.assert(lighten('rgb(100, 100, 100)', 0) === 'rgb(100, 100, 100)', '0% lighten failed')

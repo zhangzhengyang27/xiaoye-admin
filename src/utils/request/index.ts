@@ -1,14 +1,5 @@
-import Axios, {
-  type AxiosInstance,
-  type AxiosRequestConfig,
-  type CustomParamsSerializer,
-} from 'axios'
-import type {
-  PureHttpError,
-  RequestMethods,
-  PureHttpResponse,
-  PureHttpRequestConfig,
-} from './types.d'
+import Axios, { type AxiosInstance, type AxiosRequestConfig, type CustomParamsSerializer } from 'axios'
+import type { PureHttpError, RequestMethods, PureHttpResponse, PureHttpRequestConfig } from './types.d'
 import { stringify } from 'qs'
 import NProgress from '../progress'
 import { getToken, formatToken } from '@/utils/auth'
@@ -46,9 +37,7 @@ class Request {
   private static axiosInstance: AxiosInstance = Axios.create(defaultConfig)
 
   /** 重连原始请求 */
-  private static retryOriginalRequest(
-    config: PureHttpRequestConfig,
-  ): Promise<AxiosRequestConfig<any>> {
+  private static retryOriginalRequest(config: PureHttpRequestConfig): Promise<AxiosRequestConfig<any>> {
     return new Promise((resolve) => {
       Request.requests.push((token: string) => {
         config.headers['Authorization'] = formatToken(token)
@@ -195,20 +184,12 @@ class Request {
   }
 
   /** 单独抽离的 post 工具函数 */
-  public post<T, P = any>(
-    url: string,
-    params?: AxiosRequestConfig<P>,
-    config?: PureHttpRequestConfig,
-  ): Promise<T> {
+  public post<T, P = any>(url: string, params?: AxiosRequestConfig<P>, config?: PureHttpRequestConfig): Promise<T> {
     return this.MyRequest<T>('post', url, params, config)
   }
 
   /** 单独抽离的 get 工具函数 */
-  public get<T, P = any>(
-    url: string,
-    params?: AxiosRequestConfig<P>,
-    config?: PureHttpRequestConfig,
-  ): Promise<T> {
+  public get<T, P = any>(url: string, params?: AxiosRequestConfig<P>, config?: PureHttpRequestConfig): Promise<T> {
     return this.MyRequest<T>('get', url, params, config)
   }
 }

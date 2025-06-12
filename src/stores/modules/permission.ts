@@ -5,12 +5,7 @@ export { router, resetRouter, constantMenus } from '@/router'
 export { getConfig, responsiveStorageNameSpace } from '@/config'
 
 import { useMultiTagsStoreHook } from './multiTags'
-import {
-  ascending,
-  filterNoPermissionTree,
-  filterTree,
-  formatFlatteningRoutes,
-} from '@/router/utils'
+import { ascending, filterNoPermissionTree, filterTree, formatFlatteningRoutes } from '@/router/utils'
 import type { cacheType } from '../types'
 import { debounce, getKeyList } from '@/utils/common'
 import { store } from '@/stores'
@@ -37,9 +32,7 @@ export const usePermissionStore = defineStore('pure-permission', {
      * 4. 生成扁平化的路由结构
      */
     handleWholeMenus(routes: any[]) {
-      this.wholeMenus = filterNoPermissionTree(
-        filterTree(ascending(this.constantMenus.concat(routes))),
-      )
+      this.wholeMenus = filterNoPermissionTree(filterTree(ascending(this.constantMenus.concat(routes))))
       this.flatteningRoutes = formatFlatteningRoutes(this.constantMenus.concat(routes) as any)
     },
     /**
@@ -69,10 +62,7 @@ export const usePermissionStore = defineStore('pure-permission', {
         const nameList = getKeyList(useMultiTagsStoreHook().multiTags, 'name')
         while (cacheLength > 0) {
           nameList.findIndex((v) => v === this.cachePageList[cacheLength - 1]) === -1 &&
-            this.cachePageList.splice(
-              this.cachePageList.indexOf(this.cachePageList[cacheLength - 1]),
-              1,
-            )
+            this.cachePageList.splice(this.cachePageList.indexOf(this.cachePageList[cacheLength - 1]), 1)
           cacheLength--
         }
       })()

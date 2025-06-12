@@ -30,21 +30,13 @@
               {{ item.meta.title }}
             </span>
             <span
-              v-if="
-                isFixedTag(item)
-                  ? false
-                  : iconIsActive(item, index) || (index === activeIndex && index !== 0)
-              "
+              v-if="isFixedTag(item) ? false : iconIsActive(item, index) || (index === activeIndex && index !== 0)"
               class="el-icon-close"
               @click.stop="deleteMenu(item)"
             >
               <IconifyIconOffline :icon="Close" />
             </span>
-            <span
-              v-if="showModel !== 'card'"
-              :ref="'schedule' + index"
-              :class="[scheduleIsActive(item)]"
-            />
+            <span v-if="showModel !== 'card'" :ref="'schedule' + index" :class="[scheduleIsActive(item)]" />
           </template>
           <div v-else class="chrome-tab">
             <div class="chrome-tab__bg">
@@ -53,11 +45,7 @@
             <span class="tag-title">
               {{ item.meta.title }}
             </span>
-            <span
-              v-if="isFixedTag(item) ? false : index !== 0"
-              class="chrome-close-btn"
-              @click.stop="deleteMenu(item)"
-            >
+            <span v-if="isFixedTag(item) ? false : index !== 0" class="chrome-close-btn" @click.stop="deleteMenu(item)">
               <IconifyIconOffline :icon="Close" />
             </span>
             <span class="chrome-tab-divider" />
@@ -70,18 +58,8 @@
     </span>
     <!-- 右键菜单按钮 -->
     <transition name="el-zoom-in-top">
-      <ul
-        v-show="visible"
-        ref="contextmenuRef"
-        :key="Math.random()"
-        :style="getContextMenuStyle"
-        class="contextmenu"
-      >
-        <div
-          v-for="(item, key) in tagsViews.slice(0, 6)"
-          :key="key"
-          style="display: flex; align-items: center"
-        >
+      <ul v-show="visible" ref="contextmenuRef" :key="Math.random()" :style="getContextMenuStyle" class="contextmenu">
+        <div v-for="(item, key) in tagsViews.slice(0, 6)" :key="key" style="display: flex; align-items: center">
           <li v-if="item.show" @click="selectTag(key, item)">
             <IconifyIconOffline :icon="item.icon" />
             {{ item.text }}
@@ -172,10 +150,7 @@ const contextmenuRef = ref()
 const isShowArrow = ref(false)
 const topPath = getTopMenu()?.path
 const { VITE_HIDE_HOME } = import.meta.env
-const fixedTags = [
-  ...routerArrays,
-  ...usePermissionStoreHook().flatteningRoutes.filter((v) => v?.meta?.fixedTag),
-]
+const fixedTags = [...routerArrays, ...usePermissionStoreHook().flatteningRoutes.filter((v) => v?.meta?.fixedTag)]
 
 const dynamicTagView = async () => {
   await nextTick()
@@ -220,16 +195,10 @@ const moveToView = async (index: number): Promise<void> => {
     tabItemElOffsetLeft + tabItemOffsetWidth < -translateX.value + scrollbarDomWidth
   ) {
     // 标签在可视区域
-    translateX.value = Math.min(
-      0,
-      scrollbarDomWidth - tabItemOffsetWidth - tabItemElOffsetLeft - tabNavPadding,
-    )
+    translateX.value = Math.min(0, scrollbarDomWidth - tabItemOffsetWidth - tabItemElOffsetLeft - tabNavPadding)
   } else {
     // 标签在可视区域右侧
-    translateX.value = -(
-      tabItemElOffsetLeft -
-      (scrollbarDomWidth - tabNavPadding - tabItemOffsetWidth)
-    )
+    translateX.value = -(tabItemElOffsetLeft - (scrollbarDomWidth - tabNavPadding - tabItemOffsetWidth))
   }
 }
 

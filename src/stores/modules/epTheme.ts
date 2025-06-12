@@ -6,8 +6,7 @@ const LAYOUT_KEY = `${responsiveStorageNameSpace()}layout`
 
 export const useEpThemeStore = defineStore('pure-epTheme', {
   state: () => ({
-    epThemeColor:
-      storageLocal.get<StorageConfigs>(LAYOUT_KEY)?.epThemeColor ?? getConfig().EpThemeColor,
+    epThemeColor: storageLocal.get<StorageConfigs>(LAYOUT_KEY)?.epThemeColor ?? getConfig().EpThemeColor,
     epTheme: storageLocal.get<StorageConfigs>(LAYOUT_KEY)?.theme ?? getConfig().Theme,
   }),
   getters: {

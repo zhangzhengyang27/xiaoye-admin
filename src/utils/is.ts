@@ -132,16 +132,7 @@ export function isMobile(): boolean {
 
   // 传统userAgent检测
   const userAgent = navigator.userAgent.toLowerCase()
-  const mobileKeywords = [
-    'android',
-    'iphone',
-    'ipod',
-    'ipad',
-    'windows phone',
-    'blackberry',
-    'opera mini',
-    'mobile',
-  ]
+  const mobileKeywords = ['android', 'iphone', 'ipod', 'ipad', 'windows phone', 'blackberry', 'opera mini', 'mobile']
 
   // 检查屏幕尺寸（辅助判断）
   const isSmallScreen = window.innerWidth < 768

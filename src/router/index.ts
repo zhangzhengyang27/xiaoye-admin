@@ -1,10 +1,4 @@
-import {
-  type Router,
-  type RouteRecordRaw,
-  type RouteComponent,
-  createRouter,
-  createWebHistory,
-} from 'vue-router'
+import { type Router, type RouteRecordRaw, type RouteComponent, createRouter, createWebHistory } from 'vue-router'
 import login from '../views/login/index.vue'
 
 export const router: Router = createRouter({

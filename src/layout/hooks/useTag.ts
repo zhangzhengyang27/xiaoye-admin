@@ -1,12 +1,4 @@
-import {
-  ref,
-  unref,
-  computed,
-  reactive,
-  onMounted,
-  type CSSProperties,
-  getCurrentInstance,
-} from 'vue'
+import { ref, unref, computed, reactive, onMounted, type CSSProperties, getCurrentInstance } from 'vue'
 import type { tagsViewsType } from '../types'
 import { useRoute, useRouter } from 'vue-router'
 
@@ -44,14 +36,12 @@ export function useTags() {
 
   /** 显示模式，默认灵动模式 */
   const showModel = ref(
-    storageLocal.get<StorageConfigs>(`${responsiveStorageNameSpace()}configure`)?.showModel ||
-      'smart',
+    storageLocal.get<StorageConfigs>(`${responsiveStorageNameSpace()}configure`)?.showModel || 'smart',
   )
 
   /** 是否隐藏标签页，默认显示 */
   const showTags = ref(
-    storageLocal.get<StorageConfigs>(`${responsiveStorageNameSpace()}configure`)?.hideTabs ??
-      'false',
+    storageLocal.get<StorageConfigs>(`${responsiveStorageNameSpace()}configure`)?.hideTabs ?? 'false',
   )
 
   const multiTags: any = computed(() => {

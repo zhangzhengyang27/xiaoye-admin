@@ -21,9 +21,7 @@ export default defineComponent({
         {
           icon: this.icon,
           'aria-hidden': false,
-          style: attrs?.style
-            ? Object.assign(attrs.style, { outline: 'none' })
-            : { outline: 'none' },
+          style: attrs?.style ? Object.assign(attrs.style, { outline: 'none' }) : { outline: 'none' },
           ...attrs,
         },
         { default: () => [] },
@@ -33,9 +31,7 @@ export default defineComponent({
         this.icon,
         {
           'aria-hidden': false,
-          style: attrs?.style
-            ? Object.assign(attrs.style, { outline: 'none' })
-            : { outline: 'none' },
+          style: attrs?.style ? Object.assign(attrs.style, { outline: 'none' }) : { outline: 'none' },
           ...attrs,
         },
         {

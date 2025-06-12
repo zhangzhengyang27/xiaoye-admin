@@ -21,7 +21,7 @@ import { useGlobal } from './useGlobal'
 
 const errorInfo = '当前路由配置不正确，请检查配置'
 
-export function UseNav() {
+export function useNav() {
   const pureApp = useAppStoreHook()
   // 从当前 Vue Router 实例中获取完整的原始路由表配置
   const routers = useRouter().options.routes
@@ -49,9 +49,7 @@ export function UseNav() {
 
   /** 用户名 */
   const username = computed(() => {
-    return isAllEmpty(useUserStoreHook()?.nickname)
-      ? useUserStoreHook()?.username
-      : useUserStoreHook()?.nickname
+    return isAllEmpty(useUserStoreHook()?.nickname) ? useUserStoreHook()?.username : useUserStoreHook()?.nickname
   })
 
   const avatarsStyle = computed(() => {

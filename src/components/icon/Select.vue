@@ -18,19 +18,9 @@
               <IconifyIconOnline v-else :icon="inputValue" />
             </div>
           </template>
-          <el-input
-            v-model="filterValue"
-            class="px-2 pt-2"
-            placeholder="搜索图标"
-            clearable
-          ></el-input>
+          <el-input v-model="filterValue" class="px-2 pt-2" placeholder="搜索图标" clearable></el-input>
           <el-tabs v-model="currentActiveType" @tab-click="handleClick">
-            <el-tab-pane
-              v-for="(pane, index) in tabsList"
-              :key="index"
-              :label="pane.label"
-              :name="pane.name"
-            >
+            <el-tab-pane v-for="(pane, index) in tabsList" :key="index" :label="pane.label" :name="pane.name">
               <el-scrollbar height="220px">
                 <ul class="flex flex-wrap px-2! ml-2!">
                   <li
@@ -40,18 +30,10 @@
                     :style="iconItemStyle(item)"
                     @click="onChangeIcon(item)"
                   >
-                    <IconifyIconOnline
-                      :icon="currentActiveType + item"
-                      width="20px"
-                      height="20px"
-                    />
+                    <IconifyIconOnline :icon="currentActiveType + item" width="20px" height="20px" />
                   </li>
                 </ul>
-                <el-empty
-                  v-show="pageList.length === 0"
-                  :description="`${filterValue} 图标不存在`"
-                  :image-size="60"
-                />
+                <el-empty v-show="pageList.length === 0" :description="`${filterValue} 图标不存在`" :image-size="60" />
               </el-scrollbar>
             </el-tab-pane>
           </el-tabs>
@@ -67,16 +49,7 @@
               size="small"
               @current-change="onCurrentChange"
             ></el-pagination>
-            <el-button
-              class="justify-end mx-2!"
-              type="danger"
-              size="small"
-              text
-              bg
-              @click="onClear"
-            >
-              清空
-            </el-button>
+            <el-button class="justify-end mx-2!" type="danger" size="small" text bg @click="onClear"> 清空 </el-button>
           </div>
         </el-popover>
       </template>
@@ -183,10 +156,7 @@ function onClear() {
 watch(
   () => pageList.value,
   // @ts-expect-error 解决类型错误问题
-  () =>
-    (totalPage.value = copyIconList[currentActiveType.value].filter((i) =>
-      i.includes(filterValue.value),
-    ).length),
+  () => (totalPage.value = copyIconList[currentActiveType.value].filter((i) => i.includes(filterValue.value)).length),
   { immediate: true },
 )
 watch(

@@ -65,9 +65,7 @@ function ascending(arr: any[]) {
  * @returns 过滤后的新路由树
  */
 function filterTree(data: RouteComponent[]) {
-  const newTree = cloneDeep(data).filter(
-    (v: { meta: { showLink: boolean } }) => v.meta?.showLink !== false,
-  )
+  const newTree = cloneDeep(data).filter((v: { meta: { showLink: boolean } }) => v.meta?.showLink !== false)
   newTree.forEach((v: { children }) => v.children && (v.children = filterTree(v.children)))
   return newTree
 }
@@ -116,9 +114,7 @@ function formatFlatteningRoutes(routesList: RouteRecordRaw[]) {
   let hierarchyList = buildHierarchyTree(routesList)
   for (let i = 0; i < hierarchyList.length; i++) {
     if (hierarchyList[i].children) {
-      hierarchyList = hierarchyList
-        .slice(0, i + 1)
-        .concat(hierarchyList[i].children, hierarchyList.slice(i + 1))
+      hierarchyList = hierarchyList.slice(0, i + 1).concat(hierarchyList[i].children, hierarchyList.slice(i + 1))
     }
   }
   return hierarchyList
@@ -178,11 +174,4 @@ function handleAliveRoute({ name }: ToRouteType, mode?: string) {
   }
 }
 
-export {
-  ascending,
-  filterNoPermissionTree,
-  filterTree,
-  formatFlatteningRoutes,
-  getTopMenu,
-  handleAliveRoute,
-}
+export { ascending, filterNoPermissionTree, filterTree, formatFlatteningRoutes, getTopMenu, handleAliveRoute }
