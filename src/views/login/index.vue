@@ -30,7 +30,7 @@
                   clearable
                   placeholder="请输入账号"
                   :prefix-icon="useRenderIcon(User)"
-                ></el-input>
+                />
               </el-form-item>
             </Motion>
 
@@ -55,7 +55,7 @@
                   :prefix-icon="useRenderIcon(Keyhole)"
                 >
                   <template v-slot:append>
-                    <ImageVerify v-model:code="imgCode"></ImageVerify>
+                    <ImageVerify v-model:code="imgCode" />
                   </template>
                 </el-input>
               </el-form-item>

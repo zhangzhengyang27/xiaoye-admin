@@ -18,7 +18,7 @@
               <IconifyIconOnline v-else :icon="inputValue" />
             </div>
           </template>
-          <el-input v-model="filterValue" class="px-2 pt-2" placeholder="搜索图标" clearable></el-input>
+          <el-input v-model="filterValue" class="px-2 pt-2" placeholder="搜索图标" clearable />
           <el-tabs v-model="currentActiveType" @tab-click="handleClick">
             <el-tab-pane v-for="(pane, index) in tabsList" :key="index" :label="pane.label" :name="pane.name">
               <el-scrollbar height="220px">
@@ -48,7 +48,7 @@
               background
               size="small"
               @current-change="onCurrentChange"
-            ></el-pagination>
+            />
             <el-button class="justify-end mx-2!" type="danger" size="small" text bg @click="onClear"> 清空 </el-button>
           </div>
         </el-popover>
