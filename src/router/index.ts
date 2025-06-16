@@ -48,6 +48,14 @@ export const router: Router = createRouter({
             title: '函数式弹窗',
           },
         },
+        {
+          path: '/components/drawer',
+          name: 'DrawerPage',
+          component: () => import('@/views/components/drawer/index.vue'),
+          meta: {
+            title: '函数式抽屉',
+          },
+        },
       ],
     },
   ],
