@@ -148,3 +148,24 @@ export function isMobile(): boolean {
 export function isString(val: unknown): val is string {
   return typeof val === 'string'
 }
+
+/**
+ * 检查值是否为普通对象
+ * @param value 要检查的值
+ * @returns 是否为普通对象
+ */
+export function isObject(value: unknown): value is Record<string, unknown> {
+  // 排除null和undefined
+  if (value === null || value === undefined) {
+    return false
+  }
+
+  // 排除非object类型
+  if (typeof value !== 'object') {
+    return false
+  }
+
+  // 排除数组和特殊对象类型
+  const proto = Object.getPrototypeOf(value)
+  return proto === Object.prototype || proto === null
+}

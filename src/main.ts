@@ -1,4 +1,4 @@
-import { createApp } from 'vue'
+import { createApp, type Directive } from 'vue'
 import { setupStore } from '@/stores'
 
 import App from './App.vue'
@@ -17,15 +17,23 @@ import { injectResponsiveStorage } from '@/utils/responsive'
 
 const app = createApp(App)
 
+// 注册自定义指令
+import * as directives from '@/directives'
+Object.keys(directives).forEach((key) => {
+  app.directive(key, (directives as { [key: string]: Directive })[key])
+})
+
 // 全局注册@iconify/vue图标库
 import { IconifyIconOffline, IconifyIconOnline, FontIcon } from '@/components/icon'
 app.component('IconifyIconOffline', IconifyIconOffline)
 app.component('IconifyIconOnline', IconifyIconOnline)
 app.component('FontIcon', FontIcon)
 
-app.config.globalProperties.$config = 123
-app.config.globalProperties.$storage = 456
-app.config.globalProperties.$echarts = 789
+// 全局注册 vue-tippy
+import 'tippy.js/dist/tippy.css'
+import 'tippy.js/themes/light.css'
+import VueTippy from 'vue-tippy'
+app.use(VueTippy)
 
 getPlatformConfig(app).then(async (config) => {
   setupStore(app)
