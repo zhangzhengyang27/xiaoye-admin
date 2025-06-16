@@ -64,6 +64,14 @@ export const router: Router = createRouter({
             title: '消息提示',
           },
         },
+        {
+          path: '/components/upload',
+          name: 'PureUpload',
+          component: () => import('@/views/components/upload/index.vue'),
+          meta: {
+            title: '文件上传',
+          },
+        },
       ],
     },
   ],
