@@ -2,19 +2,10 @@ import type { VNode } from 'vue'
 import { isFunction } from '@/utils/is'
 import { type MessageHandler, ElMessage } from 'element-plus'
 
-/** 消息类型枚举 */
-enum MessageType {
-  INFO = 'info',
-  SUCCESS = 'success',
-  WARNING = 'warning',
-  ERROR = 'error',
-}
-
-/** 消息参数接口 */
 /**
  * 消息组件参数接口
  *
- * @property {MessageType} [type] - 消息类型
+ * @property [type] - 消息类型
  * @property {boolean} [plain] - 是否为朴素样式
  * @property {any} [icon] - 自定义图标
  * @property {boolean} [dangerouslyUseHTMLString] - 是否将消息内容作为HTML字符串处理
@@ -28,11 +19,11 @@ enum MessageType {
  * @property {(() => void) | null} [onClose] - 关闭时的回调函数
  */
 interface MessageParams {
-  type?: MessageType
+  type?: 'info' | 'success' | 'warning' | 'error'
   plain?: boolean
   icon?: any
   dangerouslyUseHTMLString?: boolean
-  customClass?: string
+  customClass?: 'el' | 'antd'
   duration?: number
   showClose?: boolean
   offset?: number
@@ -44,10 +35,10 @@ interface MessageParams {
 
 /** 默认消息参数 */
 const DEFAULT_MESSAGE_PARAMS: Partial<MessageParams> = {
-  type: MessageType.INFO,
+  type: 'info',
   plain: false,
   dangerouslyUseHTMLString: false,
-  customClass: 'xiaoye-message',
+  customClass: 'antd',
   duration: 2000,
   showClose: true,
   offset: 16,
@@ -74,7 +65,7 @@ const message = (content: string | VNode | (() => VNode), params?: MessageParams
   return ElMessage({
     ...mergedParams,
     // 确保自定义类名处理一致
-    customClass: mergedParams.customClass === 'xiaoye-message' ? 'xiaoye-message' : '',
+    customClass: mergedParams.customClass === 'antd' ? 'pure-message' : '',
     // 将 onClose 的 null 转换为 undefined
     onClose: mergedParams.onClose === null ? undefined : mergedParams.onClose,
   })

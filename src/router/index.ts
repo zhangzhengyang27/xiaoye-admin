@@ -56,6 +56,14 @@ export const router: Router = createRouter({
             title: '函数式抽屉',
           },
         },
+        {
+          path: '/components/message',
+          name: 'Message',
+          component: () => import('@/views/components/message.vue'),
+          meta: {
+            title: '消息提示',
+          },
+        },
       ],
     },
   ],
