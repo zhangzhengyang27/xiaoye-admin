@@ -11,30 +11,34 @@ enum MessageType {
 }
 
 /** 消息参数接口 */
+/**
+ * 消息组件参数接口
+ *
+ * @property {MessageType} [type] - 消息类型
+ * @property {boolean} [plain] - 是否为朴素样式
+ * @property {any} [icon] - 自定义图标
+ * @property {boolean} [dangerouslyUseHTMLString] - 是否将消息内容作为HTML字符串处理
+ * @property {string} [customClass] - 自定义类名
+ * @property {number} [duration] - 显示时间(毫秒)
+ * @property {boolean} [showClose] - 是否显示关闭按钮
+ * @property {number} [offset] - 消息距离窗口顶部的偏移量
+ * @property {string | HTMLElement} [appendTo] - 消息挂载的DOM节点
+ * @property {boolean} [grouping] - 是否合并内容相同的消息
+ * @property {number} [repeatNum] - 重复次数
+ * @property {(() => void) | null} [onClose] - 关闭时的回调函数
+ */
 interface MessageParams {
-  /** 消息类型 */
   type?: MessageType
-  /** 是否为朴素样式 */
   plain?: boolean
-  /** 自定义图标 */
   icon?: any
-  /** 是否将消息内容作为HTML字符串处理 */
   dangerouslyUseHTMLString?: boolean
-  /** 自定义类名 */
   customClass?: string
-  /** 显示时间(毫秒) */
   duration?: number
-  /** 是否显示关闭按钮 */
   showClose?: boolean
-  /** 消息距离窗口顶部的偏移量 */
   offset?: number
-  /** 消息挂载的DOM节点 */
   appendTo?: string | HTMLElement
-  /** 是否合并内容相同的消息 */
   grouping?: boolean
-  /** 重复次数 */
   repeatNum?: number
-  /** 关闭时的回调函数 */
   onClose?: (() => void) | null
 }
 
