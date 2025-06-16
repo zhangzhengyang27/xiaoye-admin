@@ -1,5 +1,7 @@
+import { getConfig, responsiveStorageNameSpace } from '@/config'
+import { storageLocal } from '@/utils/storage'
 import { defineStore } from 'pinia'
-import { store, getConfig, storageLocal, responsiveStorageNameSpace } from '../utils'
+import { store } from '../index'
 
 // 本地存储中布局配置的key
 const LAYOUT_KEY = `${responsiveStorageNameSpace()}layout`

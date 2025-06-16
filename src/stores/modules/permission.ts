@@ -9,6 +9,7 @@ import { ascending, filterNoPermissionTree, filterTree, formatFlatteningRoutes }
 import type { cacheType } from '../types'
 import { debounce, getKeyList } from '@/utils/common'
 import { store } from '@/stores'
+import { constantMenus } from '@/router'
 
 export const usePermissionStore = defineStore('pure-permission', {
   state: () => ({

@@ -1,8 +1,12 @@
 import { defineStore } from 'pinia'
-import { type userType, store, router, resetRouter, routerArrays, storageLocal } from '../utils'
 import { type UserResult, type RefreshTokenResult, getLogin, refreshTokenApi } from '@/api/user'
 import { useMultiTagsStoreHook } from './multiTags'
 import { type DataInfo, setToken, removeToken, userKey } from '@/utils/auth'
+import type { userType } from '../types'
+import { storageLocal } from '@/utils/storage'
+import { store } from '../index'
+import { routerArrays } from '@/layout/types'
+import router, { resetRouter } from '@/router'
 
 export const useUserStore = defineStore('user', {
   state: (): userType => ({

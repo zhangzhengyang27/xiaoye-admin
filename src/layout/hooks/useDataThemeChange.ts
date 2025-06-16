@@ -9,8 +9,9 @@ import { useAppStoreHook } from '@/stores/modules/app'
 import { useGlobal } from './useGlobal'
 import { useEpThemeStoreHook } from '@/stores/modules/epTheme'
 import { useMultiTagsStoreHook } from '@/stores/modules/multiTags'
-import { darken, lighten } from '@/utils/color'
+// import { darken, lighten } from '@/utils/color'
 import { storageLocal } from '@/utils/storage'
+import { darken, lighten } from '@pureadmin/utils'
 
 export function useDataThemeChange() {
   const { layoutTheme, layout } = useLayout()
@@ -119,6 +120,7 @@ export function useDataThemeChange() {
    */
   function dataThemeChange(overall?: string) {
     overallStyle.value = overall
+    console.log('useEpThemeStoreHook().epTheme', useEpThemeStoreHook().epTheme)
     if (useEpThemeStoreHook().epTheme === 'light' && dataTheme.value) {
       setLayoutThemeColor('default', false)
     } else {
@@ -157,5 +159,18 @@ export function useDataThemeChange() {
     router.push('/login')
     useMultiTagsStoreHook().handleTags('equal', [...routerArrays])
     resetRouter()
+  }
+
+  return {
+    body,
+    dataTheme,
+    overallStyle,
+    layoutTheme,
+    themeColors,
+    onReset,
+    toggleClass,
+    dataThemeChange,
+    setEpThemeColor,
+    setLayoutThemeColor,
   }
 }

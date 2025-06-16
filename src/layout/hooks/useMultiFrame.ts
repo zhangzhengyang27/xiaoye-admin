@@ -25,6 +25,7 @@ export const useMultiFrame = () => {
   }
 
   return {
+    MAP,
     setMap,
     getMap,
     delMap,

@@ -74,6 +74,7 @@ export function darken(color: string, percent: number): string {
  * @returns 变亮后的颜色字符串
  */
 export function lighten(color: string, percent: number): string {
+  console.log('percent', percent)
   // 参数校验
   if (percent < 0 || percent > 100) {
     throw new Error('Percent must be between 0 and 100')
@@ -162,7 +163,7 @@ function runTests() {
 }
 
 // 执行测试
-runTests()
+// runTests()
 
 // 测试用例
 function runTestsLighten() {
@@ -190,4 +191,4 @@ function runTestsLighten() {
 }
 
 // 执行测试
-runTestsLighten()
+// runTestsLighten()

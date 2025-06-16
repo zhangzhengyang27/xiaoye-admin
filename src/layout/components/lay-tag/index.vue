@@ -110,7 +110,7 @@ import ArrowRightSLine from '~icons/ri/arrow-right-s-line'
 import ArrowLeftSLine from '~icons/ri/arrow-left-s-line'
 import { isAllEmpty } from '@/utils/common'
 import { isEqual } from '@/utils/is'
-import { useResizeObserver } from '@pureadmin/utils'
+import { delay, useResizeObserver } from '@pureadmin/utils'
 
 const {
   Close,
@@ -617,7 +617,6 @@ onMounted(() => {
   })
 
   useResizeObserver(scrollbarDom, dynamicTagView)
-  // @ts-expect-error 第三方插件的问题
   delay().then(() => dynamicTagView())
 })
 
@@ -627,10 +626,6 @@ onBeforeUnmount(() => {
   emitter.off('tagViewsShowModel')
   emitter.off('changLayoutRoute')
 })
-
-function delay() {
-  throw new Error('Function not implemented.')
-}
 </script>
 
 <style scoped>

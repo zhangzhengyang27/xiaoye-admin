@@ -12,6 +12,9 @@ import './styles/reset.scss' // 引入重置样式
 import './styles/index.scss' // 引入全局样式
 import 'element-plus/dist/index.css' // 引入element-plus样式
 
+import { getPlatformConfig } from './config'
+import { injectResponsiveStorage } from '@/utils/responsive'
+
 const app = createApp(App)
 
 // 全局注册@iconify/vue图标库
@@ -24,8 +27,12 @@ app.config.globalProperties.$config = 123
 app.config.globalProperties.$storage = 456
 app.config.globalProperties.$echarts = 789
 
-setupStore(app)
-app.use(router)
-app.use(ElementPlus)
-app.use(MotionPlugin)
-app.mount('#app')
+getPlatformConfig(app).then(async (config) => {
+  setupStore(app)
+  app.use(router)
+
+  injectResponsiveStorage(app, config)
+  app.use(ElementPlus)
+  app.use(MotionPlugin)
+  app.mount('#app')
+})

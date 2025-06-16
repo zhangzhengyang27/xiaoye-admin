@@ -1,6 +1,9 @@
 import { defineStore } from 'pinia'
-import { type appType, store, getConfig, storageLocal, responsiveStorageNameSpace } from '../utils'
 import { isMobile } from '@/utils/is'
+import type { appType } from '../types'
+import { storageLocal } from '@/utils/storage'
+import { getConfig, responsiveStorageNameSpace } from '@/config'
+import { store } from '../index'
 
 export const useAppStore = defineStore('pure-app', {
   state: (): appType => ({

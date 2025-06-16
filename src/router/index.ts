@@ -1,5 +1,6 @@
 import { type Router, type RouteRecordRaw, type RouteComponent, createRouter, createWebHistory } from 'vue-router'
 import login from '../views/login/index.vue'
+import layout from '@/layout/index.vue'
 
 export const router: Router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -8,6 +9,11 @@ export const router: Router = createRouter({
       path: '/',
       name: 'login',
       component: login,
+    },
+    {
+      path: '/layout',
+      name: 'layout',
+      component: layout,
     },
   ],
 })

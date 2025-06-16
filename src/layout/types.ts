@@ -44,7 +44,7 @@ export type tagsViewsType = {
 }
 
 export interface setType {
-  sider: {
+  sidebar: {
     opened: boolean
     withoutAnimation: boolean
     isClickCollapse: boolean
