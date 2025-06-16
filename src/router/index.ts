@@ -6,11 +6,11 @@ import Welcome from '@/views/welcome/index.vue'
 export const router: Router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
-    // {
-    //   path: '/',
-    //   name: 'login',
-    //   component: login,
-    // },
+    {
+      path: '/login',
+      name: 'login',
+      component: login,
+    },
     {
       path: '/',
       name: 'Home',
@@ -28,6 +28,24 @@ export const router: Router = createRouter({
           meta: {
             title: '首页',
             showLink: true,
+          },
+        },
+      ],
+    },
+    {
+      path: '/components',
+      redirect: '/components/dialog',
+      meta: {
+        icon: 'ep/menu',
+        title: '组件',
+      },
+      children: [
+        {
+          path: '/components/dialog',
+          name: 'DialogPage',
+          component: () => import('@/views/components/dialog/index.vue'),
+          meta: {
+            title: '函数式弹窗',
           },
         },
       ],
