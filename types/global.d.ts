@@ -39,6 +39,11 @@ interface PlatformConfigs {
 }
 
 /**
+ *  继承 `@pureadmin/table` 的 `TableColumns` ，方便全局直接调用
+ */
+type TableColumnList = Array<TableColumns>
+
+/**
  * 平台里所有组件实例都能访问到的全局属性对象的类型声明
  */
 interface GlobalPropertiesApi {

@@ -1,19 +1,36 @@
 import { type Router, type RouteRecordRaw, type RouteComponent, createRouter, createWebHistory } from 'vue-router'
 import login from '../views/login/index.vue'
-import layout from '@/layout/index.vue'
+import Layout from '@/layout/index.vue'
+import Welcome from '@/views/welcome/index.vue'
 
 export const router: Router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
+    // {
+    //   path: '/',
+    //   name: 'login',
+    //   component: login,
+    // },
     {
       path: '/',
-      name: 'login',
-      component: login,
-    },
-    {
-      path: '/layout',
-      name: 'layout',
-      component: layout,
+      name: 'Home',
+      component: Layout,
+      redirect: '/welcome',
+      meta: {
+        icon: 'ep/home-filled',
+        title: '首页',
+      },
+      children: [
+        {
+          path: '/welcome',
+          name: 'Welcome',
+          component: () => import('@/views/welcome/index.vue'),
+          meta: {
+            title: '首页',
+            showLink: true,
+          },
+        },
+      ],
     },
   ],
 })

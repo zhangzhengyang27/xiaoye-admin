@@ -15,6 +15,11 @@ import 'element-plus/dist/index.css' // 引入element-plus样式
 import { getPlatformConfig } from './config'
 import { injectResponsiveStorage } from '@/utils/responsive'
 
+import { useEcharts } from '@/plugins/echarts'
+
+import '@pureadmin/table/dist/style.css'
+import PureTable from '@pureadmin/table'
+
 const app = createApp(App)
 
 // 注册自定义指令
@@ -42,5 +47,7 @@ getPlatformConfig(app).then(async (config) => {
   injectResponsiveStorage(app, config)
   app.use(ElementPlus)
   app.use(MotionPlugin)
+  app.use(useEcharts)
+  app.use(PureTable, { locale: 'zhCn' })
   app.mount('#app')
 })

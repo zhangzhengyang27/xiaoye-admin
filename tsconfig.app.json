@@ -8,6 +8,11 @@
     "noImplicitThis": true,
     "strict": false,
 
+    // 解决在类型文件中:找不到命名空间“JSX”
+    "jsx": "preserve",
+    "jsxFactory": "h",
+    "jsxFragmentFactory": "Fragment",
+
     "paths": {
       "@/*": ["./src/*"]
     },
