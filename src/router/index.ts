@@ -88,6 +88,14 @@ export const router: Router = createRouter({
             title: '日期选择器',
           },
         },
+        {
+          path: '/components/datetime-picker',
+          name: 'DateTimePicker',
+          component: () => import('@/views/components/datetime-picker.vue'),
+          meta: {
+            title: '日期时间选择器',
+          },
+        },
       ],
     },
   ],

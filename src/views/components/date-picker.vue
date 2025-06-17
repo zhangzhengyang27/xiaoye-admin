@@ -83,7 +83,7 @@
       end-placeholder="结束时间"
       :shortcuts="shortcuts1"
       :popper-options="{
-        placement: 'bottom-start', // 下拉面板出现的位置，或 'top-start'、'bottom-end'、'top-end' 等，具体看 https://popper.js.org/docs/v2/constructors/#options
+        placement: 'bottom-start',
       }"
       :size="dynamicSize"
       :disabled="size === 'disabled'"
