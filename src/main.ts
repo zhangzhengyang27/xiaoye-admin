@@ -11,6 +11,7 @@ import { MotionPlugin } from '@vueuse/motion'
 import './styles/reset.scss' // 引入重置样式
 import './styles/index.scss' // 引入全局样式
 import 'element-plus/dist/index.css' // 引入element-plus样式
+import 'animate.css'
 
 import { getPlatformConfig } from './config'
 import { injectResponsiveStorage } from '@/utils/responsive'

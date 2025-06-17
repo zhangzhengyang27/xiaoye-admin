@@ -112,6 +112,22 @@ export const router: Router = createRouter({
             title: '图标选择器',
           },
         },
+        {
+          path: '/components/animatecss',
+          name: 'AnimateCss',
+          component: () => import('@/views/components/animatecss/index.vue'),
+          meta: {
+            title: 'animate.css 选择器',
+          },
+        },
+        {
+          path: '/components/cropping',
+          name: 'Cropping',
+          component: () => import('@/views/components/cropping.vue'),
+          meta: {
+            title: '图片裁剪',
+          },
+        },
       ],
     },
   ],

@@ -10,3 +10,10 @@ type Effect = 'light' | 'dark'
  * const divRef: ElRef<HTMLDivElement> = document.getElementById('myDiv');
  */
 type ElRef<T extends HTMLElement = HTMLDivElement> = Nullable<T>
+
+/**
+ * Nullable<T>：表示这个类型可以是 T 类型的值，也可以是 null
+ */
+type Nullable<T> = T | null
+
+type NonNullable<T> = T extends null | undefined ? never : T
