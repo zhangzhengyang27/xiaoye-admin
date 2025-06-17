@@ -80,6 +80,14 @@ export const router: Router = createRouter({
             title: '多选卡片',
           },
         },
+        {
+          path: '/components/date-picker',
+          name: 'DatePicker',
+          component: () => import('@/views/components/date-picker.vue'),
+          meta: {
+            title: '日期选择器',
+          },
+        },
       ],
     },
   ],
