@@ -99,16 +99,6 @@
       </div>
     </div>
     <el-divider />
-
-    <div class="flex flex-wrap">
-      <p>
-        裁剪、上传头像请参考
-        <span class="font-bold text-[18x] cursor-pointer hover:text-[red]" @click="router.push({ name: 'SystemUser' })">
-          系统管理-用户管理
-        </span>
-        表格操作栏中的上传头像功能
-      </p>
-    </div>
   </el-card>
 </template>
 

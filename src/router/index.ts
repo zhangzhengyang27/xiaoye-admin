@@ -72,6 +72,14 @@ export const router: Router = createRouter({
             title: '文件上传',
           },
         },
+        {
+          path: '/components/check-card',
+          name: 'CheckCard',
+          component: () => import('@/views/components/check-card.vue'),
+          meta: {
+            title: '多选卡片',
+          },
+        },
       ],
     },
   ],
