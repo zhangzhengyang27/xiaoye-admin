@@ -96,6 +96,14 @@ export const router: Router = createRouter({
             title: '日期时间选择器',
           },
         },
+        {
+          path: '/components/time-picker',
+          name: 'TimePicker',
+          component: () => import('@/views/components/time-picker.vue'),
+          meta: {
+            title: '时间选择器',
+          },
+        },
       ],
     },
   ],
