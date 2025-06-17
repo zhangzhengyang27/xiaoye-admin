@@ -104,6 +104,14 @@ export const router: Router = createRouter({
             title: '时间选择器',
           },
         },
+        {
+          path: '/components/icon-select',
+          name: 'IconSelect',
+          component: () => import('@/views/components/icon-select.vue'),
+          meta: {
+            title: '图标选择器',
+          },
+        },
       ],
     },
   ],

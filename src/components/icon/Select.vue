@@ -98,7 +98,6 @@ const tabsList = [
 ]
 
 const pageList = computed(() =>
-  // @ts-expect-error 解决类型错误问题
   copyIconList[currentActiveType.value]
     .filter((i: string | string[]) => i.includes(filterValue.value))
     .slice((currentPage.value - 1) * pageSize.value, currentPage.value * pageSize.value),
@@ -124,7 +123,6 @@ function onBeforeEnter() {
   if (isAllEmpty(icon.value)) return
   setVal()
   // 寻找当前图标在第几页
-  // @ts-expect-error 解决类型错误问题
   const curIconIndex = copyIconList[currentActiveType.value].findIndex((i) => i === icon.value)
   currentPage.value = Math.ceil((curIconIndex + 1) / pageSize.value)
 }
@@ -133,7 +131,6 @@ function onAfterLeave() {
   filterValue.value = ''
 }
 
-// @ts-expect-error 解决类型错误问题
 function handleClick({ props }) {
   currentPage.value = 1
   currentActiveType.value = props.name
@@ -155,7 +152,6 @@ function onClear() {
 
 watch(
   () => pageList.value,
-  // @ts-expect-error 解决类型错误问题
   () => (totalPage.value = copyIconList[currentActiveType.value].filter((i) => i.includes(filterValue.value)).length),
   { immediate: true },
 )
