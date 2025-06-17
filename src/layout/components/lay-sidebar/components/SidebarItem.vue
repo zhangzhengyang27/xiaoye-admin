@@ -25,7 +25,7 @@
 
       <template #title>
         <div :style="getDivStyle">
-          <ReText
+          <YeText
             :tippyProps="{
               offset: [0, -10],
               theme: tooltipEffect,
@@ -33,7 +33,7 @@
             class="w-full! text-inherit!"
           >
             {{ onlyOneChild.meta.title }}
-          </ReText>
+          </YeText>
           <SidebarExtraIcon :extraIcon="onlyOneChild.meta.extraIcon" />
         </div>
       </template>
@@ -44,7 +44,7 @@
       <div v-if="toRaw(item.meta.icon)" :style="getSubMenuIconStyle" class="sub-menu-icon">
         <component :is="useRenderIcon(item.meta && toRaw(item.meta.icon))" />
       </div>
-      <ReText
+      <YeText
         v-if="
           layout === 'mix' && toRaw(item.meta.icon)
             ? !isCollapse || item?.pathList?.length !== 2
@@ -57,7 +57,7 @@
         :class="textClass"
       >
         {{ item.meta.title }}
-      </ReText>
+      </YeText>
       <SidebarExtraIcon v-if="!isCollapse" :extraIcon="item.meta.extraIcon" />
     </template>
 
@@ -77,7 +77,7 @@ import { type PropType, type CSSProperties, ref, toRaw, computed, useAttrs } fro
 import { getConfig } from '@/config'
 import { posix } from 'path-browserify'
 import { type menuType } from '@/layout/types'
-import { ReText } from '@/components/ReText'
+import YeText from '@/components/YeText/index.vue'
 import { useNav } from '@/layout/hooks/useNav'
 import SidebarLinkItem from './SidebarLinkItem.vue'
 import SidebarExtraIcon from './SidebarExtraIcon.vue'

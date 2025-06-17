@@ -136,6 +136,14 @@ export const router: Router = createRouter({
             title: '分段控制器',
           },
         },
+        {
+          path: '/components/text',
+          name: 'PureText',
+          component: () => import('@/views/components/text.vue'),
+          meta: {
+            title: '文本省略',
+          },
+        },
       ],
     },
   ],
