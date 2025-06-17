@@ -128,6 +128,14 @@ export const router: Router = createRouter({
             title: '图片裁剪',
           },
         },
+        {
+          path: '/components/segmented',
+          name: 'Segmented',
+          component: () => import('@/views/components/segmented.vue'),
+          meta: {
+            title: '分段控制器',
+          },
+        },
       ],
     },
   ],
